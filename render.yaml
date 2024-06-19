@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: skidd-proxy
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:5000 proxy:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
